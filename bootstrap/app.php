@@ -51,5 +51,12 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+// Tambahkan ini di bagian paling bawah sebelum return $app;
+if (isset($_SERVER['VERCEL_URL'])) {
+    $app->useStoragePath('/tmp/storage');
+    $app->setBootstrapContainerPath('/tmp/bootstrap');
+}
 
 return $app;
+
+
